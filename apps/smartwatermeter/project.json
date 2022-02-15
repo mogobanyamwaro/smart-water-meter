@@ -1,0 +1,52 @@
+{
+  "root": "apps/smartwatermeter",
+  "sourceRoot": "apps/smartwatermeter/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/smartwatermeter",
+        "main": "apps/smartwatermeter/src/main.ts",
+        "tsConfig": "apps/smartwatermeter/tsconfig.app.json",
+        "assets": ["apps/smartwatermeter/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/smartwatermeter/src/environments/environment.ts",
+              "with": "apps/smartwatermeter/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "smartwatermeter:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/smartwatermeter/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/smartwatermeter"],
+      "options": {
+        "jestConfig": "apps/smartwatermeter/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
