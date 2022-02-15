@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
-    "smartwatermeter": "apps/smartwatermeter"
+    "smartwatermeter": "apps/smartwatermeter",
+    "users": "libs/users"
   }
 }
